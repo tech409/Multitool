@@ -3,7 +3,7 @@
   "outputDirectory": "dist/public",
   "functions": {
     "server/index.js": {
-      "runtime": "nodejs18.x"
+      "runtime": "nodejs18.0"
     }
   },
   "routes": [
