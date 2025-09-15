@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://multitool-pro.com/sitemap.xml
+Sitemap: https://toolsuitpro.vercel.app/sitemap.xml
 
 # Crawl delay (optional)
 Crawl-delay: 1
