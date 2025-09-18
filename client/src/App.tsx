@@ -14,6 +14,11 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/calculator" component={Home} />
+      <Route path="/currency" component={Home} />
+      <Route path="/units" component={Home} />
+      <Route path="/level" component={Home} />
+      <Route path="/bmi" component={Home} />
       <Route component={NotFound} />
     </Switch>
   );

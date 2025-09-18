@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
@@ -9,22 +9,43 @@ import { CurrencyConverter } from "@/components/currency-converter";
 import { UnitConverterComponent } from "@/components/unit-converter";
 import { HandLevel } from "@/components/hand-level";
 import { BMICalculatorComponent } from "@/components/bmi-calculator";
+import { useLocation, Link } from "wouter";
 
 type ActiveTab = "calculator" | "currency" | "units" | "level" | "bmi";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>("calculator");
+  const [location] = useLocation();
   const { theme, setTheme } = useTheme();
+  
+  // Determine active tab from URL
+  const getActiveTabFromPath = (path: string): ActiveTab => {
+    switch (path) {
+      case "/calculator":
+        return "calculator";
+      case "/currency":
+        return "currency";
+      case "/units":
+        return "units";
+      case "/level":
+        return "level";
+      case "/bmi":
+        return "bmi";
+      default:
+        return "calculator"; // Default for root path
+    }
+  };
+  
+  const activeTab = getActiveTabFromPath(location);
   
   // Update SEO meta tags when active tool changes
   useSEO(activeTab);
 
   const tabs = [
-    { id: "calculator" as const, label: "Calculator" },
-    { id: "currency" as const, label: "Currency" },
-    { id: "units" as const, label: "Units" },
-    { id: "level" as const, label: "Level" },
-    { id: "bmi" as const, label: "BMI" },
+    { id: "calculator" as const, label: "Calculator", path: "/calculator" },
+    { id: "currency" as const, label: "Currency", path: "/currency" },
+    { id: "units" as const, label: "Units", path: "/units" },
+    { id: "level" as const, label: "Level", path: "/level" },
+    { id: "bmi" as const, label: "BMI", path: "/bmi" },
   ];
 
   const renderActiveComponent = () => {
@@ -83,16 +104,16 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex space-x-1 overflow-x-auto scrollbar-hide">
             {tabs.map((tab) => (
-              <Button
-                key={tab.id}
-                variant="ghost"
-                className={`tab-btn px-4 py-3 text-sm font-medium rounded-t-lg whitespace-nowrap transition-colors duration-200 ${
-                  activeTab === tab.id ? "active" : ""
-                }`}
-                onClick={() => setActiveTab(tab.id)}
-              >
-                {tab.label}
-              </Button>
+              <Link key={tab.id} href={tab.path}>
+                <Button
+                  variant="ghost"
+                  className={`tab-btn px-4 py-3 text-sm font-medium rounded-t-lg whitespace-nowrap transition-colors duration-200 ${
+                    activeTab === tab.id ? "active" : ""
+                  }`}
+                >
+                  {tab.label}
+                </Button>
+              </Link>
             ))}
           </div>
         </div>
