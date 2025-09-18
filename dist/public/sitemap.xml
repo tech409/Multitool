@@ -7,31 +7,31 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://toolsuitpro.vercel.app/?tool=calculator</loc>
+    <loc>https://toolsuitpro.vercel.app/calculator</loc>
     <lastmod>2025-09-09T16:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolsuitpro.vercel.app/?tool=currency</loc>
+    <loc>https://toolsuitpro.vercel.app/currency</loc>
     <lastmod>2025-09-09T16:00:00+00:00</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolsuitpro.vercel.app/?tool=units</loc>
+    <loc>https://toolsuitpro.vercel.app/units</loc>
     <lastmod>2025-09-09T16:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolsuitpro.vercel.app/?tool=level</loc>
+    <loc>https://toolsuitpro.vercel.app/level</loc>
     <lastmod>2025-09-09T16:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolsuitpro.vercel.app/?tool=bmi</loc>
+    <loc>https://toolsuitpro.vercel.app/bmi</loc>
     <lastmod>2025-09-09T16:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
