@@ -58,8 +58,47 @@ export function UnitConverterComponent() {
   return (
     <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 max-w-2xl mx-auto animate-fade-in">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">Unit Converter</h2>
-        <p className="text-gray-600 dark:text-gray-400 text-sm">Convert between different units of measurement</p>
+        <h1 className="text-3xl font-bold mb-3 text-gray-900 dark:text-white">Unit Converter</h1>
+        <p className="text-gray-600 dark:text-gray-400 text-lg mb-4">
+          Convert between different units of measurement across length, weight, temperature, and volume
+        </p>
+        
+        {/* Features List */}
+        <div className="bg-gray-50 dark:bg-slate-700 rounded-lg p-4 mb-4">
+          <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Supported Categories:</h3>
+          <div className="grid md:grid-cols-2 gap-2 text-sm text-gray-700 dark:text-gray-300">
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+              Length (meters, feet, inches, miles, etc.)
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+              Weight (grams, pounds, ounces, kilograms)
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+              Temperature (Celsius, Fahrenheit, Kelvin)
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+              Volume (liters, gallons, cups, milliliters)
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+              Instant conversion calculations
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+              High precision results
+            </div>
+          </div>
+        </div>
+        
+        {/* Usage Instructions */}
+        <div className="text-sm text-gray-600 dark:text-gray-400">
+          <p><strong>How to use:</strong> Select a category, choose units, enter value, and get instant conversions. 
+          Essential for cooking, construction, science, and everyday measurements.</p>
+        </div>
       </div>
 
       {/* Category Selection */}

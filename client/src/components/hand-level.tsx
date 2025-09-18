@@ -110,8 +110,47 @@ export function HandLevel() {
   return (
     <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 max-w-md mx-auto animate-fade-in">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">Hand Level</h2>
-        <p className="text-gray-600 dark:text-gray-400 text-sm">Use device gyroscope for precision leveling</p>
+        <h1 className="text-3xl font-bold mb-3 text-gray-900 dark:text-white">Hand Level</h1>
+        <p className="text-gray-600 dark:text-gray-400 text-lg mb-4">
+          Professional digital level using your device's gyroscope for precise measurements
+        </p>
+        
+        {/* Features List */}
+        <div className="bg-gray-50 dark:bg-slate-700 rounded-lg p-4 mb-4">
+          <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Features:</h3>
+          <div className="grid md:grid-cols-2 gap-2 text-sm text-gray-700 dark:text-gray-300">
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+              Gyroscope-based precision leveling
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+              Calibration for accurate readings
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+              Visual bubble level interface
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+              Real-time orientation feedback
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+              Works on mobile devices
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+              Persistent calibration settings
+            </div>
+          </div>
+        </div>
+        
+        {/* Usage Instructions */}
+        <div className="text-sm text-gray-600 dark:text-gray-400">
+          <p><strong>How to use:</strong> Grant permission, calibrate for accuracy, then use for leveling surfaces. 
+          Perfect for construction, furniture assembly, and home improvement projects.</p>
+        </div>
       </div>
 
       {!permissionGranted && (

@@ -106,10 +106,50 @@ export function ScientificCalculator() {
   }, [appendToDisplay, calculateResult, clearCalculator]);
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 max-w-md mx-auto animate-fade-in">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 max-w-4xl mx-auto animate-fade-in">
+      {/* Header and Description */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">Scientific Calculator</h2>
-        <p className="text-gray-600 dark:text-gray-400 text-sm">Advanced mathematical operations</p>
+        <h1 className="text-3xl font-bold mb-3 text-gray-900 dark:text-white">Scientific Calculator</h1>
+        <p className="text-gray-600 dark:text-gray-400 text-lg mb-4">
+          Professional scientific calculator with advanced mathematical functions, trigonometry, logarithms, and more
+        </p>
+        
+        {/* Features List */}
+        <div className="bg-gray-50 dark:bg-slate-700 rounded-lg p-4 mb-4">
+          <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Features:</h3>
+          <div className="grid md:grid-cols-2 gap-2 text-sm text-gray-700 dark:text-gray-300">
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              Basic arithmetic operations (+, -, ×, ÷)
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              Trigonometric functions (sin, cos, tan)
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              Logarithmic functions (log, ln)
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              Power and square root operations
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              Mathematical constants (π, e)
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              Keyboard support for faster input
+            </div>
+          </div>
+        </div>
+        
+        {/* Usage Instructions */}
+        <div className="text-sm text-gray-600 dark:text-gray-400">
+          <p><strong>How to use:</strong> Click buttons or use your keyboard for calculations. 
+          Press 'C' to clear, 'Enter' or '=' to calculate results. Perfect for students, engineers, and professionals.</p>
+        </div>
       </div>
       
       {/* Display */}

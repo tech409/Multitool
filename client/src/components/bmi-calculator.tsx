@@ -67,8 +67,47 @@ export function BMICalculatorComponent() {
   return (
     <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 max-w-2xl mx-auto animate-fade-in">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">BMI Calculator</h2>
-        <p className="text-gray-600 dark:text-gray-400 text-sm">Calculate your Body Mass Index and health category</p>
+        <h1 className="text-3xl font-bold mb-3 text-gray-900 dark:text-white">BMI Calculator</h1>
+        <p className="text-gray-600 dark:text-gray-400 text-lg mb-4">
+          Calculate your Body Mass Index and receive personalized health insights and recommendations
+        </p>
+        
+        {/* Features List */}
+        <div className="bg-gray-50 dark:bg-slate-700 rounded-lg p-4 mb-4">
+          <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Features:</h3>
+          <div className="grid md:grid-cols-2 gap-2 text-sm text-gray-700 dark:text-gray-300">
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+              Multiple unit support (metric/imperial)
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+              Instant BMI calculation
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+              Health category classification
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+              Visual BMI scale indicator
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+              Personalized health recommendations
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+              Scientific WHO standards
+            </div>
+          </div>
+        </div>
+        
+        {/* Usage Instructions */}
+        <div className="text-sm text-gray-600 dark:text-gray-400">
+          <p><strong>How to use:</strong> Enter your height and weight, get instant BMI calculation with health insights. 
+          Consult healthcare professionals for personalized medical advice.</p>
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6 mb-6">

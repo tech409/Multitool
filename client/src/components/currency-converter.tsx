@@ -69,8 +69,47 @@ export function CurrencyConverter() {
   return (
     <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 max-w-2xl mx-auto animate-fade-in">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">Currency Converter</h2>
-        <p className="text-gray-600 dark:text-gray-400 text-sm">Real-time exchange rates for major currencies</p>
+        <h1 className="text-3xl font-bold mb-3 text-gray-900 dark:text-white">Currency Converter</h1>
+        <p className="text-gray-600 dark:text-gray-400 text-lg mb-4">
+          Convert between major world currencies with live exchange rates updated in real-time
+        </p>
+        
+        {/* Features List */}
+        <div className="bg-gray-50 dark:bg-slate-700 rounded-lg p-4 mb-4">
+          <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Features:</h3>
+          <div className="grid md:grid-cols-2 gap-2 text-sm text-gray-700 dark:text-gray-300">
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+              Real-time exchange rates
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+              8 major world currencies
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+              Instant conversion calculations
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+              Popular currency pairs
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+              Two-way currency swapping
+            </div>
+            <div className="flex items-center">
+              <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+              Accurate to 4 decimal places
+            </div>
+          </div>
+        </div>
+        
+        {/* Usage Instructions */}
+        <div className="text-sm text-gray-600 dark:text-gray-400">
+          <p><strong>How to use:</strong> Select currencies, enter amount, and get instant conversions. 
+          Perfect for travelers, international business, and forex trading analysis.</p>
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6 mb-6">
