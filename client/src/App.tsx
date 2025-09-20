@@ -14,11 +14,11 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/calculator" component={calculator} />
-      <Route path="/currency" component={currency} />
-      <Route path="/units" component={units} />
-      <Route path="/level" component={level} />
-      <Route path="/bmi" component={bmi} />
+      <Route path="/calculator" component={Home} />
+      <Route path="/currency" component={Home} />
+      <Route path="/units" component={Home} />
+      <Route path="/level" component={Home} />
+      <Route path="/bmi" component={Home} />
       <Route component={NotFound} />
     </Switch>
   );
