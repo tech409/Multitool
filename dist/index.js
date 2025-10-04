@@ -12,6 +12,8 @@ var MemStorage = class {
   currentUserId;
   currentPrefsId;
   currentRateId;
+  isRefreshingRates = false;
+  refreshTimer = null;
   constructor() {
     this.users = /* @__PURE__ */ new Map();
     this.userPreferences = /* @__PURE__ */ new Map();
@@ -19,21 +21,152 @@ var MemStorage = class {
     this.currentUserId = 1;
     this.currentPrefsId = 1;
     this.currentRateId = 1;
-    this.initializeDefaultRates();
+    this.initializeDefaultRates().catch((error) => {
+      console.error("Failed to initialize exchange rates:", error);
+    });
   }
-  initializeDefaultRates() {
-    const defaultRates = [
-      { baseCurrency: "USD", targetCurrency: "EUR", rate: 0.85 },
-      { baseCurrency: "USD", targetCurrency: "GBP", rate: 0.73 },
-      { baseCurrency: "USD", targetCurrency: "JPY", rate: 110 },
-      { baseCurrency: "USD", targetCurrency: "CAD", rate: 1.25 },
-      { baseCurrency: "USD", targetCurrency: "AUD", rate: 1.35 },
-      { baseCurrency: "USD", targetCurrency: "CHF", rate: 0.92 },
-      { baseCurrency: "USD", targetCurrency: "CNY", rate: 6.45 },
-      { baseCurrency: "EUR", targetCurrency: "USD", rate: 1.18 },
-      { baseCurrency: "GBP", targetCurrency: "USD", rate: 1.37 }
+  async initializeDefaultRates() {
+    try {
+      await this.fetchLiveRatesWithRetry();
+      console.log("\u2705 Successfully loaded live exchange rates");
+    } catch (error) {
+      console.warn("\u26A0\uFE0F Failed to fetch live rates, using fallback data:", error);
+      this.initializeFallbackRates();
+    }
+    this.startAutoRefresh();
+  }
+  async fetchWithTimeout(url, timeoutMs = 1e4) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: {
+          "User-Agent": "Exchange-Rate-Service/1.0"
+        }
+      });
+      clearTimeout(timeoutId);
+      return response;
+    } catch (error) {
+      clearTimeout(timeoutId);
+      throw error;
+    }
+  }
+  async fetchLiveRatesWithRetry(maxRetries = 3) {
+    let lastError = null;
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        await this.fetchLiveRates();
+        return;
+      } catch (error) {
+        lastError = error;
+        if (attempt < maxRetries) {
+          const backoffMs = Math.pow(2, attempt - 1) * 1e3;
+          console.warn(`\u26A0\uFE0F Attempt ${attempt} failed, retrying in ${backoffMs}ms:`, error);
+          await new Promise((resolve) => setTimeout(resolve, backoffMs));
+        }
+      }
+    }
+    throw new Error(`Failed to fetch exchange rates after ${maxRetries} attempts. Last error: ${lastError?.message}`);
+  }
+  async fetchLiveRates() {
+    const response = await this.fetchWithTimeout("https://api.exchangerate-api.com/v4/latest/USD", 1e4);
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+    }
+    const data = await response.json();
+    if (!data.rates || typeof data.rates !== "object") {
+      throw new Error("Invalid API response format: missing or invalid rates object");
+    }
+    const supportedCurrencies = ["EUR", "GBP", "JPY", "CAD", "AUD", "CHF", "CNY"];
+    const newRatesMap = /* @__PURE__ */ new Map();
+    const usdToUsd = {
+      id: this.currentRateId++,
+      baseCurrency: "USD",
+      targetCurrency: "USD",
+      rate: 1,
+      lastUpdated: /* @__PURE__ */ new Date()
+    };
+    newRatesMap.set("USD-USD", usdToUsd);
+    supportedCurrencies.forEach((targetCurrency) => {
+      const rate = data.rates[targetCurrency];
+      if (rate && typeof rate === "number" && rate > 0) {
+        const exchangeRate = {
+          id: this.currentRateId++,
+          baseCurrency: "USD",
+          targetCurrency,
+          rate,
+          lastUpdated: /* @__PURE__ */ new Date()
+        };
+        newRatesMap.set(`USD-${targetCurrency}`, exchangeRate);
+        const inverseRate = {
+          id: this.currentRateId++,
+          baseCurrency: targetCurrency,
+          targetCurrency: "USD",
+          rate: 1 / rate,
+          lastUpdated: /* @__PURE__ */ new Date()
+        };
+        newRatesMap.set(`${targetCurrency}-USD`, inverseRate);
+      }
+    });
+    supportedCurrencies.forEach((currency) => {
+      const selfRate = {
+        id: this.currentRateId++,
+        baseCurrency: currency,
+        targetCurrency: currency,
+        rate: 1,
+        lastUpdated: /* @__PURE__ */ new Date()
+      };
+      newRatesMap.set(`${currency}-${currency}`, selfRate);
+    });
+    this.generateCrossRatesForMap(newRatesMap, supportedCurrencies);
+    this.exchangeRates = newRatesMap;
+  }
+  generateCrossRates(currencies) {
+    this.generateCrossRatesForMap(this.exchangeRates, currencies);
+  }
+  generateCrossRatesForMap(ratesMap, currencies) {
+    currencies.forEach((baseCurrency) => {
+      currencies.forEach((targetCurrency) => {
+        if (baseCurrency !== targetCurrency) {
+          const key = `${baseCurrency}-${targetCurrency}`;
+          if (!ratesMap.has(key)) {
+            const baseToUsd = ratesMap.get(`${baseCurrency}-USD`);
+            const usdToTarget = ratesMap.get(`USD-${targetCurrency}`);
+            if (baseToUsd && usdToTarget) {
+              const crossRate = baseToUsd.rate * usdToTarget.rate;
+              const exchangeRate = {
+                id: this.currentRateId++,
+                baseCurrency,
+                targetCurrency,
+                rate: crossRate,
+                lastUpdated: /* @__PURE__ */ new Date()
+              };
+              ratesMap.set(key, exchangeRate);
+            }
+          }
+        }
+      });
+    });
+  }
+  initializeFallbackRates() {
+    const fallbackRates = [
+      { baseCurrency: "USD", targetCurrency: "EUR", rate: 0.92 },
+      { baseCurrency: "USD", targetCurrency: "GBP", rate: 0.79 },
+      { baseCurrency: "USD", targetCurrency: "JPY", rate: 149.5 },
+      { baseCurrency: "USD", targetCurrency: "CAD", rate: 1.35 },
+      { baseCurrency: "USD", targetCurrency: "AUD", rate: 1.54 },
+      { baseCurrency: "USD", targetCurrency: "CHF", rate: 0.88 },
+      { baseCurrency: "USD", targetCurrency: "CNY", rate: 7.25 },
+      { baseCurrency: "EUR", targetCurrency: "USD", rate: 1.09 },
+      { baseCurrency: "GBP", targetCurrency: "USD", rate: 1.27 },
+      { baseCurrency: "JPY", targetCurrency: "USD", rate: 67e-4 },
+      { baseCurrency: "CAD", targetCurrency: "USD", rate: 0.74 },
+      { baseCurrency: "AUD", targetCurrency: "USD", rate: 0.65 },
+      { baseCurrency: "CHF", targetCurrency: "USD", rate: 1.14 },
+      { baseCurrency: "CNY", targetCurrency: "USD", rate: 0.14 }
     ];
-    defaultRates.forEach((rate) => {
+    fallbackRates.forEach((rate) => {
       const exchangeRate = {
         id: this.currentRateId++,
         ...rate,
@@ -41,6 +174,51 @@ var MemStorage = class {
       };
       this.exchangeRates.set(`${rate.baseCurrency}-${rate.targetCurrency}`, exchangeRate);
     });
+    const currencies = ["USD", "EUR", "GBP", "JPY", "CAD", "AUD", "CHF", "CNY"];
+    currencies.forEach((currency) => {
+      const selfRate = {
+        id: this.currentRateId++,
+        baseCurrency: currency,
+        targetCurrency: currency,
+        rate: 1,
+        lastUpdated: /* @__PURE__ */ new Date()
+      };
+      this.exchangeRates.set(`${currency}-${currency}`, selfRate);
+    });
+  }
+  startAutoRefresh() {
+    if (this.refreshTimer) {
+      clearInterval(this.refreshTimer);
+    }
+    this.refreshTimer = setInterval(async () => {
+      await this.refreshExchangeRates();
+    }, 30 * 60 * 1e3);
+  }
+  async refreshExchangeRates() {
+    if (this.isRefreshingRates) {
+      console.log("\u23F3 Exchange rate refresh already in progress, skipping...");
+      return;
+    }
+    this.isRefreshingRates = true;
+    try {
+      console.log("\u{1F504} Refreshing exchange rates...");
+      await this.fetchLiveRatesWithRetry();
+      console.log("\u2705 Exchange rates refreshed successfully");
+    } catch (error) {
+      console.warn("\u26A0\uFE0F Failed to refresh exchange rates:", error);
+    } finally {
+      this.isRefreshingRates = false;
+    }
+  }
+  // Public method to manually trigger a refresh (useful for testing or admin functions)
+  async forceRefreshRates() {
+    try {
+      await this.refreshExchangeRates();
+      return true;
+    } catch (error) {
+      console.error("Failed to force refresh exchange rates:", error);
+      return false;
+    }
   }
   async getUser(id) {
     return this.users.get(id);
@@ -260,6 +438,8 @@ var vite_config_default = defineConfig({
     emptyOutDir: true
   },
   server: {
+    host: "0.0.0.0",
+    port: 5e3,
     fs: {
       strict: true,
       deny: ["**/.*"]

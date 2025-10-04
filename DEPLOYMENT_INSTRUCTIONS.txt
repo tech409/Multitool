@@ -1,0 +1,161 @@
+========================================
+MULTITOOL PRO - CPANEL DEPLOYMENT GUIDE
+========================================
+
+This package contains everything needed to deploy MultiTool Pro to your cPanel hosting at toolsuitpro.com.
+
+PACKAGE CONTENTS:
+-----------------
+- dist/public/        : All frontend static files (HTML, CSS, JS, images)
+- dist/public/.htaccess : Apache configuration for SPA routing and optimization
+- dist/index.js       : Backend server (Node.js)
+- package.json        : Dependencies list
+- package-lock.json   : Locked dependency versions
+- node_modules/       : All required dependencies (optional if installing on server)
+- server/             : Server source files
+- shared/             : Shared TypeScript schemas
+
+DEPLOYMENT OPTIONS:
+------------------
+
+OPTION 1: STATIC FILES ONLY (RECOMMENDED FOR CPANEL)
+-----------------------------------------------------
+If you're using cPanel without Node.js support, deploy only the frontend static files:
+
+1. Upload the entire 'dist/public/' folder contents to your public_html directory
+2. The .htaccess file is already included and will handle:
+   - Single Page Application routing
+   - Asset caching for fast loading
+   - GZIP compression
+   - Security headers
+
+3. Your site will be accessible at: https://toolsuitpro.com
+
+Note: This static deployment works perfectly for all tools except the Currency Converter's 
+real-time exchange rates, which will use cached fallback rates.
+
+OPTION 2: FULL STACK WITH NODE.JS
+----------------------------------
+If your cPanel hosting supports Node.js applications:
+
+1. Upload all files to your server (not in public_html)
+
+2. SSH into your server or use cPanel Terminal
+
+3. Navigate to your application directory:
+   cd /home/username/multitool-pro
+
+4. Install dependencies:
+   npm install --production
+
+5. Set up environment variables (if using database):
+   Create a .env file:
+   DATABASE_URL=your_database_connection_string
+   NODE_ENV=production
+   PORT=3000
+
+6. Start the application using your cPanel's Node.js app manager:
+   - Entry point: dist/index.js
+   - Port: 3000 (or your cPanel assigned port)
+
+7. Configure your domain to point to the Node.js application
+
+OPTION 3: MANUAL STATIC DEPLOYMENT
+-----------------------------------
+To upload only static files without node_modules:
+
+1. Upload these folders to public_html:
+   dist/public/assets/
+   dist/public/index.html
+   dist/public/.htaccess
+   dist/public/vite.svg (if exists)
+
+2. Ensure .htaccess is in the root of public_html
+
+FILE PERMISSIONS:
+-----------------
+Set these permissions via cPanel File Manager or FTP:
+- Folders: 755
+- Files: 644
+- .htaccess: 644
+
+DOMAIN CONFIGURATION:
+--------------------
+In cPanel, ensure:
+1. Document root points to where you uploaded the files
+2. SSL certificate is installed (Let's Encrypt is free)
+3. WWW redirection is configured if desired
+
+PERFORMANCE OPTIMIZATION:
+------------------------
+The build is already optimized with:
+✓ Minified JavaScript (396KB gzipped to 124KB)
+✓ Minified CSS (82KB gzipped to 13KB)
+✓ Code splitting for faster initial load
+✓ Browser caching via .htaccess
+✓ GZIP compression enabled
+✓ Removed Vercel Analytics (reduced bundle size)
+
+TESTING YOUR DEPLOYMENT:
+-----------------------
+1. Visit https://toolsuitpro.com
+2. Test all tools:
+   - Calculator: Perform calculations
+   - Currency Converter: Check conversions
+   - Unit Converter: Test unit conversions
+   - BMI Calculator: Calculate BMI
+   - Hand Level: Allow device sensors (HTTPS required)
+
+3. Check browser console for errors (F12)
+4. Test dark/light mode toggle
+5. Verify all internal links work
+6. Test on mobile devices
+
+TROUBLESHOOTING:
+---------------
+Issue: "Page not found" on refresh
+Solution: Verify .htaccess is uploaded and mod_rewrite is enabled
+
+Issue: Assets not loading
+Solution: Check file paths and permissions (644 for files, 755 for folders)
+
+Issue: Hand Level not working
+Solution: HTTPS is required for device sensors. Install SSL certificate.
+
+Issue: Slow loading
+Solution: Verify GZIP compression is enabled in cPanel
+
+Issue: 500 Internal Server Error
+Solution: Check .htaccess syntax and ensure PHP/Apache versions are compatible
+
+UPDATING CONTENT:
+----------------
+To update content:
+1. Edit source files in client/src/components/
+2. Run: npm run build
+3. Upload only the updated files from dist/public/
+
+SUPPORT:
+--------
+For issues specific to cPanel hosting, contact your hosting provider.
+For issues with the application code, check the console errors.
+
+BACKUP:
+-------
+Before deployment, backup your existing site:
+1. Download current public_html contents
+2. Export any databases
+3. Save cPanel configuration
+
+NEXT STEPS:
+-----------
+1. Upload files using your preferred method (cPanel File Manager, FTP, or SSH)
+2. Test the deployment
+3. Configure SEO settings and analytics if needed
+4. Submit sitemap to search engines
+5. Monitor performance and user feedback
+
+========================================
+Deployment Date: October 2025
+Version: 1.0.0
+========================================
