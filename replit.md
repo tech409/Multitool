@@ -8,6 +8,29 @@ MultiTool Pro is a comprehensive utility application that provides five essentia
 
 Preferred communication style: Simple, everyday language.
 
+## Replit Environment Setup
+
+This project has been configured to run in the Replit environment:
+
+### Configuration
+- **Workflow**: "Start application" runs `npm run dev` on port 5000
+- **Frontend**: Vite dev server with HMR enabled, serving on 0.0.0.0:5000
+- **Backend**: Express.js API server integrated with Vite middleware
+- **Host Configuration**: Already configured with `allowedHosts: true` for Replit proxy compatibility
+- **Build Command**: `npm run build` (builds both frontend and backend)
+- **Production Command**: `npm run start` (serves production build)
+
+### Development
+- Run `npm run dev` to start the development server
+- Frontend and backend run together on port 5000
+- Hot module replacement (HMR) is enabled for instant updates
+- Exchange rates are loaded from in-memory storage on startup
+
+### Deployment
+- Deployment target: autoscale (configured for Replit deployments)
+- Build process compiles both Vite frontend and Express backend
+- Production mode serves static files from Express
+
 ## System Architecture
 
 ### Frontend Architecture
@@ -84,26 +107,39 @@ The backend serves both the API endpoints and static files, with middleware for 
 ### Development Tools
 - **Vite**: Build tool with hot module replacement
 - **TypeScript**: Type checking and enhanced developer experience
-- **ESLint/Prettier**: Code formatting and linting (implied from structure)
+- **tsx**: TypeScript execution for Node.js (development)
+- **esbuild**: Fast JavaScript bundler for production builds
 
 ## Deployment Strategy
 
 ### Build Process
 1. **Frontend Build**: Vite compiles React application to static assets in `dist/public`
 2. **Backend Build**: esbuild bundles Express server to `dist/index.js`
-3. **Database Migration**: Drizzle migrations in `migrations/` directory
+3. **Database Migration**: Drizzle migrations in `migrations/` directory (when using PostgreSQL)
 4. **Static Assets**: PWA manifest and service worker included in build
 
 ### Environment Configuration
-- **Development**: Uses Vite dev server with Express API proxy
-- **Production**: Express serves both API and static files
-- **Database**: Configured for PostgreSQL with Neon serverless support
-- **Environment Variables**: `DATABASE_URL` required for database connection
+- **Development**: Uses Vite dev server with Express API proxy, HMR enabled
+- **Production**: Express serves both API and static files from `dist/public`
+- **Database**: Configured for PostgreSQL with Neon serverless support (currently using memory storage)
+- **Environment Variables**: `DATABASE_URL` required for database connection (optional in dev)
 
 ### Hosting Considerations
-- **Single Server**: Both frontend and backend served from same Express instance
-- **Database**: PostgreSQL database required (currently using memory storage as fallback)
+- **Single Server**: Both frontend and backend served from same Express instance on port 5000
+- **Database**: PostgreSQL database optional (memory storage works as fallback)
 - **Static Files**: Served directly by Express in production
 - **PWA Support**: Service worker and manifest included for app-like experience
+- **Replit Compatible**: Configured with proper host settings for Replit's proxy environment
 
-The application is designed to be easily deployable to platforms like Vercel, Railway, or traditional VPS hosting with minimal configuration changes.
+The application is designed to be easily deployable to platforms like Replit, Vercel, Railway, or traditional VPS hosting with minimal configuration changes.
+
+## Recent Changes
+
+### October 4, 2025 - Replit Environment Setup
+- Renamed `gitignore` to `.gitignore` and added standard patterns (dist, .env, logs)
+- Configured workflow "Start application" to run on port 5000 with webview output
+- Verified Vite configuration includes `allowedHosts: true` for Replit proxy compatibility
+- Confirmed server binds to 0.0.0.0:5000 for proper Replit networking
+- Removed old "Server" workflow that was failing
+- Tested application successfully - all tools functional
+- Configured deployment for autoscale target with proper build/start scripts
