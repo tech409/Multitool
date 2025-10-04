@@ -224,6 +224,49 @@ export function BMICalculatorComponent() {
           </div>
         </div>
       )}
+
+      {/* Comprehensive Content Section */}
+      <div className="mt-8 prose dark:prose-invert max-w-none">
+        <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Understanding Body Mass Index (BMI)</h2>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Body Mass Index (BMI) is a widely used health screening tool that estimates body fat based on height and weight measurements. Developed by Belgian mathematician Adolphe Quetelet in the 1830s, BMI provides a simple numerical measure helping individuals and healthcare professionals assess whether someone's weight falls within healthy ranges. Our BMI calculator offers instant results with personalized health recommendations, supporting both metric (centimeters and kilograms) and imperial (feet, inches, and pounds) measurement systems for universal accessibility.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">How BMI Calculation Works</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          BMI is calculated using a straightforward formula: weight in kilograms divided by height in meters squared (kg/m²). For imperial measurements, the formula is: (weight in pounds × 703) / (height in inches squared). Our calculator handles these conversions automatically regardless of which measurement system you use. The resulting number is then compared against standard BMI categories established by the World Health Organization: Underweight (below 18.5), Normal weight (18.5-24.9), Overweight (25-29.9), and Obese (30 and above). These categories help identify potential health risks associated with being significantly above or below healthy weight ranges for your height.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Why BMI Matters for Health</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Research shows strong correlations between BMI categories and various health outcomes. Higher BMI values are associated with increased risks of cardiovascular disease, type 2 diabetes, high blood pressure, certain cancers, sleep apnea, osteoarthritis, and reduced life expectancy. Lower BMI values can indicate malnutrition, weakened immune function, osteoporosis risk, and other health concerns. However, BMI is a screening tool, not a diagnostic instrument. It doesn't directly measure body fat percentage, muscle mass, bone density, or overall body composition. Athletes with high muscle mass may have high BMIs despite low body fat. Elderly individuals may have normal BMIs despite reduced muscle mass. Healthcare providers consider BMI alongside other factors including waist circumference, blood pressure, blood sugar levels, cholesterol, and family history for comprehensive health assessments.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Interpreting Your BMI Results</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Our calculator provides your BMI value, category classification, visual scale indicator, and personalized health recommendations. If your BMI falls in the underweight category, consider consulting a healthcare provider about nutritional needs and potential underlying health issues. Normal weight BMI suggests you're maintaining healthy body weight relative to height - continue healthy eating and regular exercise. Overweight BMI indicates modest health risks that may be reduced through lifestyle modifications including balanced nutrition and increased physical activity. Obese BMI suggests significant health risks requiring medical guidance for safe, sustainable weight loss strategies. Remember that BMI is one health indicator among many - muscle mass, age, gender, ethnicity, and overall fitness levels all influence healthy weight ranges.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">BMI Limitations and Considerations</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          While BMI is useful for population-level health assessments and individual screening, it has important limitations. It doesn't distinguish between muscle and fat mass, potentially misclassifying muscular athletes as overweight or obese. It doesn't account for fat distribution - abdominal fat poses greater health risks than hip or thigh fat, yet BMI treats all fat equally. Age affects body composition, with older adults naturally losing muscle mass. Gender differences exist, with women typically having more body fat than men at the same BMI. Ethnic variations matter, with some populations experiencing health risks at lower BMI thresholds. Pregnancy, growth spurts in children, and certain medical conditions also affect appropriate BMI interpretation. For comprehensive health assessment, combine BMI with waist circumference measurements, body composition analysis, and medical evaluation.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Achieving and Maintaining Healthy Weight</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          If your BMI suggests weight management would benefit your health, focus on sustainable lifestyle changes rather than crash diets. Balanced nutrition emphasizing whole foods, vegetables, fruits, lean proteins, and whole grains supports healthy weight. Regular physical activity including both cardiovascular exercise and strength training builds muscle, burns calories, and improves overall health. Adequate sleep affects hunger hormones and metabolism. Stress management prevents emotional eating. Stay hydrated and limit sugary drinks. Set realistic goals - losing 1-2 pounds per week is sustainable. Track progress through measurements beyond just weight, including energy levels, fitness improvements, and how clothes fit. Consult registered dietitians for personalized nutrition plans and healthcare providers before starting significant diet or exercise programs, especially if you have existing health conditions.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Additional Health Tools</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Complement your health monitoring with our other professional tools. Track fitness calculations using our <a href="/" className="text-blue-600 dark:text-blue-400 hover:underline">Scientific Calculator</a> for calorie computations, macro ratios, and exercise metrics. Converting international nutrition labels? Use our <a href="/units" className="text-blue-600 dark:text-blue-400 hover:underline">Unit Converter</a> for accurate weight, volume, and temperature conversions when following recipes from different countries. Planning health-focused travel? Check our <a href="/currency" className="text-blue-600 dark:text-blue-400 hover:underline">Currency Converter</a> for budgeting international wellness retreats or gym memberships. Need precise measurements for home workouts? Our <a href="/level" className="text-blue-600 dark:text-blue-400 hover:underline">Digital Spirit Level</a> helps set up exercise equipment correctly.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">When to Seek Professional Guidance</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Consult healthcare professionals if your BMI indicates underweight or obesity categories, if you're experiencing unexplained weight changes, if you have existing health conditions affected by weight, or if you're planning significant dietary or exercise changes. Registered dietitians provide personalized nutrition counseling. Personal trainers design safe, effective exercise programs. Physicians identify underlying medical issues affecting weight. Mental health professionals help address emotional eating and body image concerns. Medical weight loss programs offer comprehensive support including medication or surgical options when appropriate. Children's BMI requires pediatric evaluation using age and sex-specific growth charts. Pregnant women need specialized guidance as BMI calculations don't apply during pregnancy. Senior citizens benefit from geriatric assessment considering age-related body composition changes. Remember: sustainable health improvements come from long-term lifestyle changes, not quick fixes.
+        </p>
+      </div>
     </div>
   );
 }

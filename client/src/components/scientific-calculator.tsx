@@ -220,7 +220,45 @@ export function ScientificCalculator() {
         <Button variant="outline" className="calc-btn calc-btn-number p-4 text-lg font-semibold" onClick={() => appendToDisplay('.')}>.</Button>
         <Button className="calc-btn calc-btn-operator p-4 text-lg font-semibold" onClick={() => appendToDisplay('+')}>+</Button>
         
-        <Button className="calc-btn calc-btn-equals p-4 text-lg font-semibold col-span-4" onClick={calculateResult}>=</Button>
+        <Button className="calc-btn calc-btn-equals p-4 text-lg font-semibold col-span-4" onClick={calculateResult} data-testid="button-equals">=</Button>
+      </div>
+
+      {/* Comprehensive Content Section */}
+      <div className="mt-8 prose dark:prose-invert max-w-none">
+        <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">About Our Scientific Calculator</h2>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Our free online scientific calculator is a powerful computational tool designed for students, professionals, engineers, and anyone who needs to perform complex mathematical calculations quickly and accurately. Whether you're solving advanced physics problems, conducting statistical analysis, or working through engineering equations, this calculator provides all the essential functions you need in one convenient, easy-to-use interface.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Why Use an Online Scientific Calculator?</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Traditional scientific calculators can be expensive and easily misplaced. Our web-based calculator offers several advantages: it's completely free, accessible from any device with internet connectivity, requires no downloads or installations, and is always available when you need it. Students can access it during homework sessions, professionals can use it for quick calculations at work, and educators can demonstrate mathematical concepts in real-time. The calculator works seamlessly on desktops, laptops, tablets, and smartphones, making it the perfect companion for mathematical problem-solving on the go.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Advanced Mathematical Functions</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          This scientific calculator goes beyond basic arithmetic to include comprehensive trigonometric functions including sine, cosine, and tangent calculations essential for geometry, physics, and engineering applications. The logarithmic functions (both common logarithm and natural logarithm) enable complex exponential calculations required in chemistry, biology, and advanced mathematics. Square root and power functions allow for quick polynomial evaluations and algebraic manipulations. Mathematical constants π (pi) and e (Euler's number) are readily accessible for precise scientific calculations without manual input errors.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">User-Friendly Features</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          We've designed this calculator with user experience in mind. The intuitive button layout mirrors traditional scientific calculators, reducing the learning curve for new users. Full keyboard support means you can type calculations directly using your computer keyboard - simply enter numbers and operators, press Enter for results, and use the C key to clear. The large, responsive display shows your current calculation and maintains a history of recent operations, helping you track your work and verify results. The dark mode option ensures comfortable use during extended calculation sessions and reduces eye strain in low-light environments.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Perfect for Multiple Applications</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          This calculator serves diverse needs across various fields. Students use it for algebra, calculus, trigonometry, and physics homework. Engineers rely on it for structural calculations, electrical circuit analysis, and mechanical design work. Scientists employ it for laboratory calculations, data analysis, and research computations. Financial professionals utilize it for compound interest calculations and statistical analysis. The calculator's versatility makes it an indispensable tool for anyone working with numbers and mathematical formulas.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Explore More Tools</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          While you're here, discover our other professional tools designed to make your work easier. Need to work with measurements? Try our <a href="/units" className="text-blue-600 dark:text-blue-400 hover:underline">Unit Converter</a> for seamless conversion between metric and imperial units including length, weight, temperature, and volume. Planning international travel or handling foreign transactions? Use our <a href="/currency" className="text-blue-600 dark:text-blue-400 hover:underline">Currency Converter</a> for real-time exchange rates across major world currencies. Concerned about health and fitness? Check out our <a href="/bmi" className="text-blue-600 dark:text-blue-400 hover:underline">BMI Calculator</a> for personalized health insights. Working on construction or DIY projects? Our <a href="/level" className="text-blue-600 dark:text-blue-400 hover:underline">Digital Spirit Level</a> uses your device's gyroscope for professional-grade leveling measurements. All tools are free, fast, and optimized for accuracy.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Tips for Efficient Use</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          To maximize your productivity with this calculator, familiarize yourself with keyboard shortcuts for faster input. Use parentheses to clearly define order of operations in complex expressions. Remember that trigonometric functions typically work with radians, so convert degrees if necessary. Take advantage of the mathematical constants π and e for more accurate results instead of manually typing approximate values. The clear button (C) gives you a fresh start whenever needed. For repeated similar calculations, the display history helps you track patterns and verify results across multiple operations.
+        </p>
       </div>
     </div>
   );

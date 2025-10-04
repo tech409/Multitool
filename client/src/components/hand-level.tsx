@@ -235,6 +235,49 @@ export function HandLevel() {
           </div>
         </>
       )}
+
+      {/* Comprehensive Content Section */}
+      <div className="mt-8 prose dark:prose-invert max-w-none">
+        <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Professional Digital Spirit Level</h2>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Our digital spirit level transforms your smartphone or tablet into a professional-grade leveling tool using advanced gyroscope sensor technology. Whether you're hanging pictures, installing shelves, building furniture, laying tiles, or working on major construction projects, this tool provides accurate level measurements comparable to traditional bubble levels but with the convenience of a device you already carry. The digital display shows precise angle measurements in real-time, making it easier than ever to achieve perfectly level surfaces and straight lines in any DIY or professional application.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">How Gyroscope Technology Works</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Modern smartphones and tablets contain sophisticated gyroscope sensors (also called accelerometers and orientation sensors) that detect device position and tilt with remarkable precision. These micro-electromechanical systems (MEMS) measure angular velocity and orientation changes, providing data that our level tool interprets to show whether surfaces are truly horizontal or vertical. The technology is similar to what enables screen rotation, gaming motion controls, and navigation systems. Our digital level reads these sensor values continuously, processing them to display accurate tilt measurements in degrees along both X and Y axes. This provides more precise feedback than traditional bubble levels, where the bubble position can be subjective and difficult to read accurately.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Calibration for Perfect Accuracy</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Calibration ensures your digital level provides accurate measurements by establishing a reference point for true level. To calibrate, place your device on a known flat, level surface - a machinist's level table, precisely leveled workbench, or other verified flat surface. Then press the Calibrate button in the app. This process records any inherent tilt in your device's sensor mounting and adjusts all future measurements accordingly. Calibration compensates for manufacturing variations in sensor placement and any protective case thickness that might affect readings. We recommend calibrating before beginning each project, especially when high precision matters. Store your calibration data locally so it persists between uses. If you notice inconsistent readings, recalibrate on a known level surface to restore accuracy.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Applications and Use Cases</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          This digital level serves countless applications in construction, renovation, and everyday tasks. Home improvers use it to hang picture frames, mirrors, and artwork perfectly straight. Carpenters check deck posts, framing members, and fence lines for proper vertical alignment. Tile installers verify floor and wall surfaces before laying tile to prevent lippage and ensure proper drainage. Cabinet installers level base and upper cabinets for professional appearance and proper door operation. RV owners level their vehicles for comfort and appliance operation. Furniture builders ensure table and desk surfaces are perfectly flat. Landscapers grade patios and walkways for proper water runoff. Solar panel installers optimize panel angles for maximum energy production. Machinists verify machine bed levelness for precision work. Pool table owners check playing surface levelness for accurate ball roll.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Advantages Over Traditional Levels</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Digital levels offer several advantages compared to traditional bubble levels. Precise numerical readouts show exact tilt in degrees rather than approximate bubble positions. You always have this tool available since you carry your smartphone everywhere. No need to purchase multiple length levels for different applications - one device serves all needs. The digital display works equally well in any lighting condition, unlike bubble levels that can be hard to read in dim or bright light. You can measure surfaces at any angle, not just horizontal and vertical. The tool stores calibration settings automatically. Share measurements digitally with team members or clients. No risk of bubbles becoming sluggish or levels getting out of calibration from dropping. The tool costs nothing beyond your existing device, compared to professional levels costing $50-500 depending on length and quality.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Tips for Best Results</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          For optimal accuracy, always calibrate before beginning work. Place your device flat on the surface being measured - using it at an angle or holding it can introduce errors. Remove thick phone cases during critical measurements as they can affect sensor readings. Allow a moment for readings to stabilize after placing the device, as sensors need brief settling time. For long surfaces, take multiple measurements at different points rather than relying on a single reading. Be aware that very precise work (like machinist applications requiring 0.001" accuracy) may exceed smartphone sensor capabilities - use professional precision levels for such applications. Protect your device from damage on job sites using appropriate cases. For outdoor use in bright sunlight, increase screen brightness for better visibility. The tolerance setting (default ±2 degrees) can be mentally adjusted for different applications - picture hanging might accept ±1 degree while rough construction work might accept ±3 degrees.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Complete Your Tool Collection</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Enhance your project planning with our other professional tools. Need to calculate angles, dimensions, or material quantities? Use our <a href="/" className="text-blue-600 dark:text-blue-400 hover:underline">Scientific Calculator</a> for construction math including rise/run calculations, board feet, and material estimates. Working with international materials or specifications? Try our <a href="/units" className="text-blue-600 dark:text-blue-400 hover:underline">Unit Converter</a> for seamless conversion between metric and imperial measurements used in different countries' building codes and materials. Ordering materials from international suppliers? Check our <a href="/currency" className="text-blue-600 dark:text-blue-400 hover:underline">Currency Converter</a> for accurate cost comparisons. Monitoring physical demands of construction work? Our <a href="/bmi" className="text-blue-600 dark:text-blue-400 hover:underline">BMI Calculator</a> helps maintain health during physically demanding projects.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Safety and Practical Considerations</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          While extremely useful, remember that smartphones aren't designed as primary tools for professional construction environments. Protect your device from impacts, dust, moisture, and extreme temperatures common on job sites. Use protective cases and screen protectors. Consider dedicated rugged devices for harsh environment work. Don't place expensive devices on unstable surfaces where they might fall. For critical structural work where safety is paramount, verify digital level readings with professional grade mechanical levels - use the digital tool as a quick check and the professional level for final verification. Remember that level surfaces may not always be appropriate - roofs need slope for drainage, ramps require specific angles for accessibility, and some designs intentionally use unlevel surfaces for aesthetic or functional purposes. Always follow building codes and engineering specifications rather than assuming everything should be perfectly level.
+        </p>
+      </div>
     </div>
   );
 }
