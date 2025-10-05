@@ -2,7 +2,7 @@
 MULTITOOL PRO - CPANEL DEPLOYMENT GUIDE
 ========================================
 
-This package contains everything needed to deploy MultiTool Pro to your cPanel hosting at toolsuitpro.com.
+This package contains everything needed to deploy MultiTool Pro to your cPanel hosting at https://toolsuitpro.com.
 
 PACKAGE CONTENTS:
 -----------------
